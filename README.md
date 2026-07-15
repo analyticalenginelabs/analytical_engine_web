@@ -52,6 +52,7 @@ and an obscured button to turn of synapse.
 The ZeroLang recovery sequence is a low level hardware protocol designed to mitigate system-level sabotage including sabotage or anti-tamper triggers intended to isolate the device. This sequence utilizes a direct DMA (Direct Memory Ac) to the IMU and an interrupt-driven telemetry bypass to ignore OS-side interference.
 When the OS rendering pipeline or sensor HAL is compromised by damping filters or software-side sabotage, the ZeroLang sequence forces a direct hardware path from the gyroscopic sensors to the WebGPU Camera Transformation Module. By bypassing the kernel's sensor stack, the system maintains a flawless eye-tracked parallax illusion and a visible holographic authenticity seal, ensuring that recovery tools and authentication interfaces remain functional even during a total OS lockdown.
 
+7.The architectural integrity of the spatial environment is maintained by the ￼ module. This module separates operational audio into two distinct pipelines to prevent the heavy computational load of spatial UI sound effects from degrading high-fidelity media playback
 7. JSON-LD Metadata & System Schematics
 To facilitate machine readability and Knowledge Graph integration, the AEL Authenticity Hologram is defined by the following JSON-LD Schema graph.
 
