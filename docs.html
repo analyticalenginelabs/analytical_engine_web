@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AEL-88 Documentation - Analytical Engine Labs</title>
+  
+  <!-- CSS Frameworks and Design Typography -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            cyber: {
+              primary: '#58a6ff',
+              surface: '#0d1117',
+              border: '#21262d',
+              bg: '#010409',
+              glow: '#23d3ee',
+              purple: '#bc84fc',
+              lime: '#a3e635',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-cyber-bg text-gray-300 font-sans h-full min-h-screen flex flex-col selection:bg-cyber-glow/30 selection:text-white">
+
+  <!-- Header -->
+  <header class="border-b border-cyber-border bg-cyber-surface/80 backdrop-blur sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded border border-cyber-glow flex items-center justify-center font-mono font-bold text-cyber-glow bg-cyber-glow/10 shadow-[0_0_10px_rgba(35,211,238,0.2)]">
+          Æ
+        </div>
+        <div>
+          <h1 class="font-extrabold text-sm tracking-wider text-white">ANALYTICAL ENGINE LABS</h1>
+          <p class="text-[9px] text-cyber-glow font-mono tracking-widest uppercase">System Specifications // Live Documentation</p>
+        </div>
+      </div>
+      <a href="index.html" class="px-4 py-2 border border-cyber-border rounded hover:border-white text-xs font-mono font-bold text-white transition flex items-center gap-1.5">
+        <span class="material-icons text-sm">home</span> Back to Home
+      </a>
+    </div>
+  </header>
+
+  <div class="max-w-7xl mx-auto px-4 py-8 flex-grow w-full flex flex-col lg:flex-row gap-8 relative">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="lg:w-64 flex-shrink-0 lg:sticky lg:top-24 h-fit max-h-[calc(100vh-120px)] overflow-y-auto pr-4 border-b lg:border-b-0 lg:border-r border-cyber-border pb-6 lg:pb-0">
+      <nav class="space-y-1 text-xs font-mono">
+        <p class="text-[10px] text-gray-500 uppercase tracking-wider font-bold mb-3">SYSTEM DOCUMENTATION</p>
+        <a href="#charter" class="block px-3 py-2 rounded text-cyber-primary bg-cyber-surface/50 hover:bg-cyber-surface transition font-semibold">1. Executive Charter</a>
+        <a href="#architecture" class="block px-3 py-2 rounded text-gray-400 hover:text-white hover:bg-cyber-surface/30 transition">2. Core Architecture</a>
+        <a href="#optimization" class="block px-3 py-2 rounded text-gray-400 hover:text-white hover:bg-cyber-surface/30 transition">3. Mobile Platform</a>
+        <a href="#aes" class="block px-3 py-2 rounded text-gray-400 hover:text-white hover:bg-cyber-surface/30 transition">4. AES Hardware Specs</a>
+        <a href="#hologram" class="block px-3 py-2 rounded text-gray-400 hover:text-white hover:bg-cyber-surface/30 transition">5. Authenticity Hologram</a>
+        <a href="#recovery" class="block px-3 py-2 rounded text-gray-400 hover:text-white hover:bg-cyber-surface/30 transition">6. Sabotage Mitigation</a>
+        <a href="#metadata" class="block px-3 py-2 rounded text-gray-400 hover:text-white hover:bg-cyber-surface/30 transition">7. JSON-LD Schematics</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-4xl space-y-16 prose prose-invert prose-cyber">
+      
+      <!-- Section 1 -->
+      <section id="charter" class="space-y-4 scroll-mt-24">
+        <span class="px-2.5 py-0.5 text-[9px] font-mono tracking-widest text-cyber-primary bg-cyber-primary/10 border border-cyber-primary/30 rounded-full uppercase">Chapter 01</span>
+        <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">Executive Business Charter: AEL-88 Standard</h2>
+        
+        <div class="space-y-6 text-sm text-gray-300 leading-relaxed font-sans">
+          <div class="bg-black/30 border-l-2 border-cyber-glow p-4 rounded-r">
+            <h4 class="font-mono text-xs text-cyber-glow uppercase font-bold tracking-widest mb-1">Strategic Mandate & Digital Sovereignty</h4>
+            <p>
+              The AEL-88 Standard defines the strategic mandate of Analytical Engine Laboratories (AEL) to architect "Digital Sovereignty" for modern devices. Based on AEL’s foundational principles, Digital Sovereignty is the state wherein a device’s hardware-level security and authenticity remain fully independent of traditional operating system (OS) constraints and third-party software interference. This mandate ensures that the device and the user’s identity are anchored to a tamper-resistant, hardware-accelerated root of trust.
+            </p>
+          </div>
+
+          <div class="bg-black/30 border-l-2 border-cyber-primary p-4 rounded-r">
+            <h4 class="font-mono text-xs text-cyber-primary uppercase font-bold tracking-widest mb-1">The Hybrid Shield Business Charter</h4>
+            <p>
+              AEL operates under the "Hybrid Shield" business charter—a commitment to strategic partnership through a fixed-fee intellectual property (IP) protection model. This model ensures that high-level technical innovations are protected with transparent, predictable costs. Strategic services provided under this charter include:
+            </p>
+            <ul class="list-disc pl-5 mt-3 space-y-1.5 text-xs text-gray-400">
+              <li><strong class="text-white">USPTO Prosecution:</strong> Meticulous preparation and filing of patent applications to secure technical innovations.</li>
+              <li><strong class="text-white">Validity Opinions:</strong> Rigorous assessment of patentability and infringement risks for complex system architectures.</li>
+              <li><strong class="text-white">Enforcement:</strong> Representation in U.S. District Courts and the appellate process to defend sovereign technology rights.</li>
+              <li><strong class="text-white">Post-issuance Proceedings:</strong> Managing USPTO proceedings to maintain the integrity of existing patent portfolios.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2 -->
+      <section id="architecture" class="space-y-4 scroll-mt-24 border-t border-cyber-border pt-12">
+        <span class="px-2.5 py-0.5 text-[9px] font-mono tracking-widest text-cyber-primary bg-cyber-primary/10 border border-cyber-primary/30 rounded-full uppercase">Chapter 02</span>
+        <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">AEL Sovereign Engine v1.0: Core Architecture</h2>
+        <p class="text-sm text-gray-400 font-sans leading-relaxed">
+          The AEL Sovereign Engine v1.0 is engineered for zero-latency, hardware-to-interface fidelity. The architecture bypasses the standard OS Hardware Abstraction Layer (HAL) to prevent sensor damping and rendering lag. The system comprises three logical modules:
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 text-xs font-sans">
+          <div class="bg-cyber-surface border border-cyber-border p-4 rounded space-y-2">
+            <h4 class="text-white font-bold flex items-center gap-1.5"><span class="material-icons text-cyber-primary text-sm">sensors</span> SovereignBridge</h4>
+            <p class="text-gray-400 leading-relaxed">This module executes a Gyroscopic Telemetry Intercept at 120Hz. By establishing a direct, highly optimized pipeline to Android's Sensor APIs, it provides raw, highly responsive coordinate data.</p>
+          </div>
+          <div class="bg-cyber-surface border border-cyber-border p-4 rounded space-y-2">
+            <h4 class="text-white font-bold flex items-center gap-1.5"><span class="material-icons text-cyber-glow text-sm">grid_view</span> PipelineEngine</h4>
+            <p class="text-gray-400 leading-relaxed">Utilizing the modern W3C WebGL/WebGPU specifications, this engine handles hardware-accelerated 3D perspective transformations for highly responsive visual effects.</p>
+          </div>
+          <div class="bg-cyber-surface border border-cyber-border p-4 rounded space-y-2">
+            <h4 class="text-white font-bold flex items-center gap-1.5"><span class="material-icons text-cyber-purple text-sm">gavel</span> CoreGovernance</h4>
+            <p class="text-gray-400 leading-relaxed">Integrates hardware-accelerated cryptography to validate local security tokens and device authenticity. It ensures complete privacy by validating credentials locally.</p>
+          </div>
+        </div>
+
+        <div class="pt-6">
+          <h4 class="font-mono text-xs text-white uppercase font-bold tracking-widest mb-3">Engine Component Specifications</h4>
+          <div class="overflow-x-auto border border-cyber-border rounded">
+            <table class="w-full text-left text-xs font-mono bg-black/40">
+              <thead>
+                <tr class="border-b border-cyber-border bg-cyber-surface">
+                  <th class="p-3 text-white">Module Name</th>
+                  <th class="p-3 text-cyber-glow">Operational Frequency</th>
+                  <th class="p-3 text-cyber-primary">Target Pipeline</th>
+                  <th class="p-3 text-gray-400">Description</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-cyber-border">
+                <tr>
+                  <td class="p-3 font-bold text-white">SovereignBridge</td>
+                  <td class="p-3 text-cyber-glow">120Hz</td>
+                  <td class="p-3">High-Frequency Sensor Polling</td>
+                  <td class="p-3 text-gray-400">Responsive gyroscopic coordinate streaming</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-bold text-white">PipelineEngine</td>
+                  <td class="p-3 text-cyber-glow">Real-time (60 FPS)</td>
+                  <td class="p-3">Hardware 3D Transform</td>
+                  <td class="p-3 text-gray-400">Responsive perspective visual projections</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-bold text-white">CoreGovernanceEngine</td>
+                  <td class="p-3 text-cyber-glow">Asynchronous</td>
+                  <td class="p-3">Secure Local Vault Validation</td>
+                  <td class="p-3 text-gray-400">Cryptographic token and credential verification</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3 -->
+      <section id="optimization" class="space-y-4 scroll-mt-24 border-t border-cyber-border pt-12">
+        <span class="px-2.5 py-0.5 text-[9px] font-mono tracking-widest text-cyber-primary bg-cyber-primary/10 border border-cyber-primary/30 rounded-full uppercase">Chapter 03</span>
+        <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">Synapse Mobile Platform: Hardware Optimization</h2>
+        
+        <div class="space-y-4 text-sm text-gray-300 font-sans leading-relaxed">
+          <p>
+            The Sovereign Engine is optimized to run on standard modern mobile devices, leveraging native hardware-level execution to deliver highly efficient edge AI performance.
+          </p>
+          
+          <h4 class="font-mono text-xs text-white uppercase font-bold tracking-widest pt-4">Silicon Optimization: Modern ARM64 Architecture</h4>
+          <p class="text-gray-400">
+            The application codebase is optimized specifically for modern ARM64 mobile processors:
+          </p>
+          <ul class="list-disc pl-5 space-y-2 text-xs text-gray-400">
+            <li><strong class="text-white">Power Efficiency:</strong> Utilizes Android's modern background job scheduling and low-latency thread sleeps to minimize background battery drain by up to 35%.</li>
+            <li><strong class="text-white">Performance Gains:</strong> Leverages native Neon instruction sets for highly responsive arithmetic processing and real-time sensor computations.</li>
+            <li><strong class="text-white">Secure Hardware Storage:</strong> Binds sensitive encryption keys directly to the device's hardware-backed KeyStore.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 4 -->
+      <section id="aes" class="space-y-4 scroll-mt-24 border-t border-cyber-border pt-12">
+        <span class="px-2.5 py-0.5 text-[9px] font-mono tracking-widest text-cyber-primary bg-cyber-primary/10 border border-cyber-primary/30 rounded-full uppercase">Chapter 04</span>
+        <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">Advanced Encryption Standard (AES) Hardware</h2>
+        
+        <div class="space-y-4 text-sm text-gray-300 font-sans leading-relaxed">
+          <p>
+            The AEL Sovereign Engine utilizes FIPS 197 compliant AES encryption to secure the data plane. The engine implements a symmetric block cipher with a fixed block size of 128 bits.
+          </p>
+
+          <h4 class="font-mono text-xs text-white uppercase font-bold tracking-widest pt-2">Algorithm Specifications</h4>
+          <p class="text-gray-400">
+            The system supports the highly secure, industry-standard key lengths:
+          </p>
+          <ul class="list-disc pl-5 space-y-1 text-xs text-gray-400">
+            <li><strong class="text-white">AES-256-GCM:</strong> 256-bit key in Galois/Counter Mode, providing both data confidentiality and authenticated integrity verification.</li>
+          </ul>
+
+          <p class="text-gray-400 pt-2">
+            The cryptographic engine transforms local state variables through a series of rounds utilizing secure, hardware-accelerated Android APIs:
+          </p>
+          <ul class="list-disc pl-5 space-y-1.5 text-xs text-gray-400">
+            <li><strong class="text-white">SUBBYTES & SHIFTROWS:</strong> Standard round transformations to secure local data matrices.</li>
+            <li><strong class="text-white">MIXCOLUMNS & ADDROUNDKEY:</strong> Secure round keys mixed with active state structures.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 5 -->
+      <section id="hologram" class="space-y-4 scroll-mt-24 border-t border-cyber-border pt-12">
+        <span class="px-2.5 py-0.5 text-[9px] font-mono tracking-widest text-cyber-primary bg-cyber-primary/10 border border-cyber-primary/30 rounded-full uppercase">Chapter 05</span>
+        <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">AEL Authenticity Hologram & Telemetry Engine</h2>
+        
+        <div class="space-y-4 text-sm text-gray-300 font-sans leading-relaxed">
+          <p>
+            The AEL Authenticity Hologram provides a visual root of trust through a 3D eye-tracked parallax illusion. It relies on the optimized gyroscopic telemetry stream from the accelerometer and gyroscope.
+          </p>
+
+          <h4 class="font-mono text-xs text-white uppercase font-bold tracking-widest pt-4">Audio Layer Synchronization</h4>
+          <p class="text-gray-400">
+            The system maintains acoustic immersion through high-fidelity, low-latency audio pipelines:
+          </p>
+
+          <div class="overflow-x-auto border border-cyber-border rounded">
+            <table class="w-full text-left text-xs font-mono bg-black/40">
+              <thead>
+                <tr class="border-b border-cyber-border bg-cyber-surface">
+                  <th class="p-3 text-white">Pipeline</th>
+                  <th class="p-3 text-cyber-primary">Protocol & Rendering</th>
+                  <th class="p-3 text-gray-400">Description</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-cyber-border">
+                <tr>
+                  <td class="p-3 font-bold text-white">UI Sound Effects</td>
+                  <td class="p-3">Low-Latency Spatial Audio</td>
+                  <td class="p-3 text-gray-400">Acoustic positions shift dynamically relative to screen tilt and gyroscopic coordinates.</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-bold text-white">Music Delivery</td>
+                  <td class="p-3">High-Fidelity Audio codecs</td>
+                  <td class="p-3 text-gray-400">Ensures lag-free, high-quality reproduction over standard Bluetooth outputs.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 6 -->
+      <section id="recovery" class="space-y-4 scroll-mt-24 border-t border-cyber-border pt-12">
+        <span class="px-2.5 py-0.5 text-[9px] font-mono tracking-widest text-cyber-primary bg-cyber-primary/10 border border-cyber-primary/30 rounded-full uppercase">Chapter 06</span>
+        <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">Offline Recovery & System Sabotage Mitigation</h2>
+        
+        <div class="space-y-4 text-sm text-gray-300 font-sans leading-relaxed">
+          <p>
+            The offline recovery sequence is a robust software-level safety protocol designed to mitigate local database corruption or system lockout:
+          </p>
+          <ul class="list-disc pl-5 space-y-2 text-xs text-gray-400">
+            <li><strong class="text-white">Automated State Recovery:</strong> If the local database, config keys, or local state variables experience corruption, the system initiates a secure fallback sequence, resetting local vault variables from a secure backup key.</li>
+            <li><strong class="text-white">UI Resilience:</strong> The rendering engine and sensor loops are completely decoupled from the network layer. If the device goes offline or into a total network lockdown, the eye-tracked visual hologram and local authentication tools remain 100% operational, allowing you to access local files and manage the system completely offline.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 7 -->
+      <section id="metadata" class="space-y-4 scroll-mt-24 border-t border-cyber-border pt-12">
+        <span class="px-2.5 py-0.5 text-[9px] font-mono tracking-widest text-cyber-primary bg-cyber-primary/10 border border-cyber-primary/30 rounded-full uppercase">Chapter 07</span>
+        <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">JSON-LD Metadata & System Schematics</h2>
+        <p class="text-sm text-gray-400 font-sans leading-relaxed">
+          To facilitate machine readability and Knowledge Graph integration, the AEL Authenticity Hologram is defined by the following JSON-LD Schema graph.
+        </p>
+
+        <pre class="bg-black/80 border border-cyber-border p-4 rounded text-xs font-mono text-cyber-lime overflow-x-auto h-96"><code>{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://analyticalengine.io/#organization",
+      "name": "Analytical Engine Laboratories",
+      "url": "https://analyticalengine.io/"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://analyticalengine.io/synapse-hologram/#software",
+      "name": "AEL Authenticity Hologram & Telemetry Engine",
+      "applicationCategory": "MobileApplication",
+      "abstract": "A hardware-accelerated 3D holographic security interface for the Synapse Mobile Phone Accelerator. It utilizes a Gyroscopic Telemetry Intercept at 120Hz to recalculate WebGPU perspective projections, delivering a flawless eye-tracked parallax illusion. It visualizes Zero-Knowledge Proofs (ZKP) for trustless data privacy and syncs spatial UI coordinates via Dolby Atmos and the Qualcomm aptX HD Bluetooth protocol.",
+      "provider": {
+        "@id": "https://analyticalengine.io/#organization"
+      },
+      "featureList": [
+        "Gyroscopic Telemetry Intercept (120Hz)",
+        "WebGPU Camera Transformation Module",
+        "Zero-Knowledge Proofs (ZKP) Privacy Shield",
+        "Qualcomm aptX HD Bluetooth Protocol",
+        "Dolby Atmos Spatial Audio Sync"
+      ]
+    }
+  ]
+}</code></pre>
+
+        <div class="pt-6">
+          <h4 class="font-mono text-xs text-white uppercase font-bold tracking-widest mb-3">System Platform Definitions</h4>
+          <p class="text-sm text-gray-400 font-sans leading-relaxed">
+            The engine's runtime is managed via the following programming languages and interfaces:
+          </p>
+          <ul class="list-disc pl-5 mt-2 space-y-1.5 text-xs text-gray-400">
+            <li><strong class="text-white">Kotlin (Android Native):</strong> Core UI layouts, hardware SensorManager integration, and EncryptedSharedPreferences storage.</li>
+            <li><strong class="text-white">Node.js / Express:</strong> Core local network bridge and WebSocket coordinating server.</li>
+            <li><strong class="text-white">HTML5 / WebGL / CSS3:</strong> High-fidelity interactive web dashboard and landing portal.</li>
+          </ul>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-cyber-border bg-cyber-surface/40 py-8 mt-16 text-xs text-center text-gray-500 font-mono">
+    <p>© 2026 Analytical Engine Laboratories (AEL). All sovereign rights reserved.</p>
+  </footer>
+
+  <script>
+    // Simple active state highlighters in the sidebar
+    window.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          const id = entry.target.getAttribute('id');
+          if (entry.intersectionRatio > 0) {
+            document.querySelectorAll('aside nav a').forEach(a => {
+              if (a.getAttribute('href') === '#' + id) {
+                a.classList.add('text-cyber-primary', 'bg-cyber-surface/50', 'font-semibold');
+                a.classList.remove('text-gray-400');
+              } else {
+                a.classList.remove('text-cyber-primary', 'bg-cyber-surface/50', 'font-semibold');
+                a.classList.add('text-gray-400');
+              }
+            });
+          }
+        });
+      });
+
+      document.querySelectorAll('main section').forEach(section => {
+        observer.observe(section);
+      });
+    });
+  </script>
+</body>
+</html>
