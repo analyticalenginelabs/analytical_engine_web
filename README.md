@@ -3,10 +3,10 @@
 
 ---
 
-## 1. Executive Business Charter: AEC-88 Standard & Hybrid Shield
+## 1. Executive Business Charter: AEL-88 Standard & Hybrid Shield
 
 ### Strategic Mandate and Digital Sovereignty
-The AEC-88 Standard defines the strategic mandate of Analytical Engine Laboratories (AEL) to architect "Digital Sovereignty" for modern devices. We believe that a user's data and device security should remain fully independent of third-party software interference. This mandate ensures that critical applications, local data, and user identity are anchored to a highly secure, local software-level vault utilizing hardware-accelerated cryptographic primitives.
+The AEL-88 Standard defines the strategic mandate of Analytical Engine Laboratories (AEL) to architect "Digital Sovereignty" for modern devices. We believe that a user's data and device security should remain fully independent of third-party software interference. This mandate ensures that critical applications, local data, and user identity are anchored to a highly secure, local software-level vault utilizing hardware-accelerated cryptographic primitives.
 
 ### The Hybrid Shield Business Charter
 AEL operates under the "Hybrid Shield" business charter—a commitment to strategic partnership through a fixed-fee intellectual property (IP) protection model. This model ensures that high-level technical innovations are protected with transparent, predictable costs. Strategic services provided under this charter include:
@@ -18,8 +18,8 @@ AEL operates under the "Hybrid Shield" business charter—a commitment to strate
 
 ---
 
-## 2. AEC Sovereign Engine v1.0: Core Architecture
-The AEC Sovereign Engine v1.0 is engineered for high-fidelity, responsive performance on standard mobile devices. The architecture utilizes highly optimized local processing pathways to prevent sensor damping and rendering lag. The system comprises three logical modules:
+## 2. AEL Sovereign Engine v1.0: Core Architecture
+The AEL Sovereign Engine v1.0 is engineered for high-fidelity, responsive performance on standard mobile devices. The architecture utilizes highly optimized local processing pathways to prevent sensor damping and rendering lag. The system comprises three logical modules:
 
 *   **SovereignBridge (Telemetry Layer):** This module polls the device's Inertial Measurement Unit (IMU) at a high-performance 120Hz frequency. By establishing a direct, highly optimized pipeline to Android's Sensor APIs, it provides raw, high-fidelity gyroscopic coordinate data.
 *   **PipelineEngine (Render Layer):** Utilizing the modern W3C WebGL/WebGPU specifications, this engine handles hardware-accelerated 3D perspective transformations for responsive visual effects.
@@ -61,7 +61,7 @@ Once complete, a terminal-looking text says *"Synapse Mobile Phone Accelerator A
 ---
 
 ## 4. Advanced Encryption Standard (AES) Hardware Implementation
-The AEC Sovereign Engine utilizes FIPS 197 compliant AES encryption to secure the data plane. The engine implements a symmetric block cipher with a fixed block size of 128 bits.
+The AEL Sovereign Engine utilizes FIPS 197 compliant AES encryption to secure the data plane. The engine implements a symmetric block cipher with a fixed block size of 128 bits.
 
 ### Algorithm Specifications
 The system supports secure, industry-standard key lengths:
