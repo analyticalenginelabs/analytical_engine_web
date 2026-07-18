@@ -126,64 +126,103 @@
           <div class="p-6 bg-gradient-to-b from-[#090d16] to-[#04060a] space-y-12">
             <!-- Hero Layout -->
             <div class="text-center py-8 space-y-4 max-w-2xl mx-auto">
-              <span class="px-3 py-1 text-[10px] uppercase font-mono tracking-widest text-cyber-glow bg-cyber-glow/10 border border-cyber-glow/30 rounded-full">NOW DEPLOYED TO EDGE NETWORKS</span>
-              <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-white bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-100 to-cyber-primary">SYNAPSE ACCELERATOR</h1>
-              <p class="text-sm text-gray-400 leading-relaxed font-sans">
-                The gateway for true local AI. Powered by localized optimization container shards, Synapse transitions calculators, legacy devices, tablets, and watches into high-speed reasoning machines.
+              <span class="px-3 py-1 text-[10px] uppercase font-mono tracking-widest text-cyber-glow bg-cyber-glow/10 border border-cyber-glow/30 rounded-full">WELCOME TO ANALYTICAL ENGINE LABS</span>
+              <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-white bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-100 to-cyber-primary">PRIVATE, OFFLINE AI FOR EVERYONE</h1>
+              <p class="text-sm text-gray-300 leading-relaxed font-sans">
+                We build lightweight, ultra-secure software that runs advanced Artificial Intelligence directly on your personal devices—completely offline, with zero subscription fees, and 100% data privacy.
               </p>
               
               <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4">
-                <button onclick="switchTab('tab-synapse')" class="w-full sm:w-auto px-6 py-3 bg-cyber-primary text-black font-bold font-mono text-xs uppercase tracking-wider rounded shadow-[0_0_15px_rgba(88,166,255,0.4)] hover:bg-white hover:text-black transition">
-                  Download Synapse App
+                <button onclick="switchTab('tab-synapse')" class="w-full sm:w-auto px-6 py-3 bg-cyber-primary text-black font-bold font-mono text-xs uppercase tracking-wider rounded shadow-[0_0_15px_rgba(88,166,255,0.4)] hover:bg-white hover:text-black transition flex items-center justify-center gap-2">
+                  <span class="material-icons text-sm">visibility</span> EXPLORE WORKSPACE
                 </button>
                 <button onclick="triggerHolographicDonation()" class="w-full sm:w-auto px-6 py-3 border border-cyber-border text-white hover:border-white font-bold font-mono text-xs uppercase tracking-wider rounded transition">
-                  Donate to Altruism Fund
+                  SUPPORT OUR RESEARCH
                 </button>
               </div>
             </div>
 
-            <!-- Capabilities Outline Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">
-              <div class="bg-black/40 border border-cyber-border p-5 rounded space-y-2 hover:border-cyber-primary transition">
-                <span class="material-icons text-cyber-primary">memory</span>
-                <h3 class="text-white text-sm font-bold font-sans">True Local Reason</h3>
-                <p class="text-xs text-gray-400 leading-relaxed font-sans">
-                  Process raw multi-dimensional inference arrays directly inside local silicon layers. Bypasses cloud constraints.
-                </p>
+            <!-- Why Local AI Section -->
+            <div class="space-y-6">
+              <h3 class="text-xs font-mono uppercase tracking-widest text-cyber-primary text-center">WHY RUN AI LOCALLY?</h3>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-black/40 border border-cyber-border p-5 rounded space-y-3 hover:border-cyber-primary transition">
+                  <span class="material-icons text-cyber-primary text-3xl">lock</span>
+                  <h3 class="text-white text-base font-bold font-sans">Complete Privacy</h3>
+                  <p class="text-xs text-gray-400 leading-relaxed font-sans">
+                    Your data never leaves your device. No chats, files, or images are ever uploaded to cloud servers. You are in complete control of your digital sovereignty.
+                  </p>
+                </div>
+                <div class="bg-black/40 border border-cyber-border p-5 rounded space-y-3 hover:border-cyber-primary transition">
+                  <span class="material-icons text-cyber-glow text-3xl">savings</span>
+                  <h3 class="text-white text-base font-bold font-sans">No Subscriptions</h3>
+                  <p class="text-xs text-gray-400 leading-relaxed font-sans">
+                    Forget monthly subscription fees, token counts, or paywalls. By utilizing your device's native processor, our AI applications run completely for free.
+                  </p>
+                </div>
+                <div class="bg-black/40 border border-cyber-border p-5 rounded space-y-3 hover:border-cyber-primary transition">
+                  <span class="material-icons text-cyber-purple text-3xl">signal_cellular_off</span>
+                  <h3 class="text-white text-base font-bold font-sans">100% Offline Access</h3>
+                  <p class="text-xs text-gray-400 leading-relaxed font-sans">
+                    Our local models run without requiring any internet connection. Get instant reasoning assistance on airplanes, in remote areas, or during network outages.
+                  </p>
+                </div>
               </div>
-              <div class="bg-black/40 border border-cyber-border p-5 rounded space-y-2 hover:border-cyber-primary transition">
-                <span class="material-icons text-cyber-glow">bolt</span>
-                <h3 class="text-white text-sm font-bold font-sans">Zero Token Truncation</h3>
-                <p class="text-xs text-gray-400 leading-relaxed font-sans">
-                  Compute massive parameter contexts without experiencing performance drop-offs or network latency timeouts.
-                </p>
-              </div>
-              <div class="bg-black/40 border border-cyber-border p-5 rounded space-y-2 hover:border-cyber-primary transition">
-                <span class="material-icons text-cyber-purple">settings_suggest</span>
-                <h3 class="text-white text-sm font-bold font-sans">Legacy Integration</h3>
-                <p class="text-xs text-gray-400 leading-relaxed font-sans">
-                  Breathe reasoning capabilities into old engines, tablets, smart watches, and legacy terminal interfaces.
-                </p>
+            </div>
+
+            <!-- What We Built Section -->
+            <div class="border-t border-cyber-border pt-12 space-y-8">
+              <h3 class="text-xs font-mono uppercase tracking-widest text-cyber-glow text-center">OUR FLAGSHIP APPLICATIONS</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="bg-black/40 border border-cyber-border p-6 rounded-lg space-y-4 hover:border-cyber-primary transition flex flex-col justify-between">
+                  <div class="space-y-2">
+                    <div class="flex items-center gap-2">
+                      <span class="material-icons text-cyber-primary">psychology</span>
+                      <h4 class="text-white text-lg font-bold font-sans">Synapse Platform</h4>
+                    </div>
+                    <p class="text-xs text-gray-400 leading-relaxed font-sans">
+                      A high-speed, secure virtual assistant for your phone. It features offline AI chats, local image generators, and a responsive visual music synchronization panel.
+                    </p>
+                  </div>
+                  <button onclick="switchTab('tab-synapse')" class="text-xs font-mono uppercase tracking-wider text-cyber-primary hover:text-white transition text-left flex items-center gap-1">
+                    Preview App <span class="material-icons text-sm">arrow_forward</span>
+                  </button>
+                </div>
+
+                <div class="bg-black/40 border border-cyber-border p-6 rounded-lg space-y-4 hover:border-cyber-primary transition flex flex-col justify-between">
+                  <div class="space-y-2">
+                    <div class="flex items-center gap-2">
+                      <span class="material-icons text-cyber-glow">speed</span>
+                      <h4 class="text-white text-lg font-bold font-sans">Eco Boost Utility</h4>
+                    </div>
+                    <p class="text-xs text-gray-400 leading-relaxed font-sans">
+                      A smart 1-tap optimizer that instantly cools down your hardware, clears active memory cache, and extends battery life through advanced resource reclamation.
+                    </p>
+                  </div>
+                  <button onclick="switchTab('tab-ai-loader')" class="text-xs font-mono uppercase tracking-wider text-cyber-glow hover:text-white transition text-left flex items-center gap-1">
+                    Open Analyzer <span class="material-icons text-sm">arrow_forward</span>
+                  </button>
+                </div>
               </div>
             </div>
 
             <!-- About Section / Philosophy -->
             <div class="border-t border-cyber-border pt-12 max-w-3xl mx-auto space-y-4">
-              <h3 class="text-sm font-mono uppercase tracking-widest text-cyber-primary text-center">THE ARCHITECT'S VISION</h3>
+              <h3 class="text-xs font-mono uppercase tracking-widest text-cyber-primary text-center">THE ARCHITECT'S VISION</h3>
               <blockquote class="text-sm italic text-gray-300 text-center font-sans leading-relaxed">
-                "Computers must change from standard mathematical machines into reasoning machines. By running AI locally instead of relying on cloud servers, intelligent computing gadgets are put into everyone's reach—including mobile phones, watches, tablets, and legacy computers."
+                "Technology shouldn't rely on distant corporate servers to be smart. By running lightweight AI models directly on daily gadgets—like phones, tablets, and watches—we give true computational independence and digital sovereignty back to everyone."
               </blockquote>
-              <p class="text-xs text-center text-gray-500 font-mono tracking-wider">— ARNOLD VINCENT CACHO, ARCHITECT</p>
+              <p class="text-[10px] text-center text-gray-500 font-mono tracking-wider">— ARNOLD VINCENT CACHO, FOUNDING ARCHITECT</p>
             </div>
 
             <!-- Simple Contact Section -->
             <div class="border-t border-cyber-border pt-12 max-w-md mx-auto space-y-4">
-              <h3 class="text-sm font-mono text-white tracking-widest text-center">CONNECT WITH THE LABORATORY</h3>
+              <h3 class="text-xs font-mono text-white tracking-widest text-center">CONNECT WITH THE LABORATORY</h3>
               <div class="space-y-3">
-                <input type="text" placeholder="SECURE CALL SIGN / EMAIL" class="w-full bg-black/40 border border-cyber-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-cyber-primary font-mono">
-                <textarea rows="3" placeholder="TRANSMISSION DATA" class="w-full bg-black/40 border border-cyber-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-cyber-primary font-mono resize-none"></textarea>
+                <input type="text" placeholder="YOUR NAME OR SECURE CALL SIGN" class="w-full bg-black/40 border border-cyber-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-cyber-primary font-mono">
+                <textarea rows="3" placeholder="YOUR MESSAGE OR INQUIRY" class="w-full bg-black/40 border border-cyber-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-cyber-primary font-mono resize-none"></textarea>
                 <button onclick="submitContactForm()" class="w-full py-2 bg-cyber-primary/10 border border-cyber-primary text-cyber-primary hover:bg-cyber-primary hover:text-black font-mono font-bold text-xs uppercase tracking-wider rounded transition">
-                  DISPATCH TO CORE SYSTEM
+                  SUBMIT TRANSMISSION
                 </button>
               </div>
             </div>
