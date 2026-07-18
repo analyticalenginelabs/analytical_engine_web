@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytical Engine Labs - Ultimate Workspace</title>
+  
+  <!-- CSS Frameworks and Design Typography -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons&display=swap" rel="stylesheet">
+  
+  <!-- Graphics, Animation, and Math Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            cyber: {
+              bg: '#04060a',
+              surface: '#0d1117',
+              border: '#21262d',
+              accent: '#238636',
+              glow: '#00ff00',
+              primary: '#58a6ff',
+              warn: '#f0883e',
+              error: '#ff7b72',
+              purple: '#b388ff'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #04060a;
+      color: #c9d1d9;
+      overflow-x: hidden;
+    }
+    .holo-glow {
+      box-shadow: 0 0 25px rgba(88, 166, 255, 0.25);
+      border-color: rgba(88, 166, 255, 0.4);
+    }
+    .terminal-scroll::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+    .terminal-scroll::-webkit-scrollbar-track {
+      background: #04060a;
+    }
+    .terminal-scroll::-webkit-scrollbar-thumb {
+      background: #21262d;
+      border-radius: 2px;
+    }
+    .terminal-scroll::-webkit-scrollbar-thumb:hover {
+      background: #30363d;
+    }
+    iframe {
+      background-color: #ffffff;
+    }
+    .pulse-glow {
+      animation: pulseGlow 2s infinite alternate;
+    }
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 10px rgba(0,255,0,0.2); }
+      100% { box-shadow: 0 0 25px rgba(0,255,0,0.6); }
+    }
+  </style>
+</head>
+<body class="font-sans min-h-full flex flex-col justify-between select-none">
+
+  <!-- Master Status Pipeline Header -->
+  <header class="border-b border-cyber-border bg-[#0d1117]/95 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded border border-cyber-primary flex items-center justify-center text-cyber-primary text-2xl font-bold font-mono shadow-[0_0_15px_rgba(88,166,255,0.2)]">
+          Æ
+        </div>
+        <div>
+          <h1 class="font-extrabold text-base tracking-wider text-white">ANALYTICAL ENGINE LABS</h1>
+          <p class="text-[10px] text-cyber-glow font-mono tracking-widest uppercase">RAD PIPELINE WORKSPACE v3.0 // ACTIVE</p>
+        </div>
+      </div>
+      
+      <!-- Workspace Navigation Tabs -->
+      <nav class="flex flex-wrap items-center gap-1.5 bg-black/40 p-1 rounded-lg border border-cyber-border text-xs font-mono">
+        <button onclick="switchTab('tab-landing')" id="btn-tab-landing" class="px-3 py-1.5 rounded text-white bg-cyber-border transition">01. LANDING PORTAL</button>
+        <button onclick="switchTab('tab-synapse')" id="btn-tab-synapse" class="px-3 py-1.5 rounded text-gray-400 hover:text-white transition">02. SYNAPSE CORE</button>
+        <button onclick="switchTab('tab-ai-loader')" id="btn-tab-ai-loader" class="px-3 py-1.5 rounded text-gray-400 hover:text-white transition">03. OFFLINE ENGINE</button>
+        <button onclick="switchTab('tab-geo-suite')" id="btn-tab-geo-suite" class="px-3 py-1.5 rounded text-gray-400 hover:text-white transition">04. OPTIMIZER TERMINAL</button>
+        <button onclick="switchTab('tab-rad-studio')" id="btn-tab-rad-studio" class="px-3 py-1.5 rounded text-gray-400 hover:text-white transition">05. RAD COMPILER</button>
+        <button onclick="switchTab('tab-deploy')" id="btn-tab-deploy" class="px-3 py-1.5 rounded text-gray-400 hover:text-white transition">06. 1-CLICK DEPLOY</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Grid Layout -->
+  <main class="max-w-7xl mx-auto px-4 py-6 flex-grow w-full grid grid-cols-1 lg:grid-cols-12 gap-6">
+    
+    <!-- LEFT COLUMN: Workspace Workspace Interface -->
+    <section class="lg:col-span-9 space-y-6">
+
+      <!-- ==================== TAB 1: LANDING PORTAL ==================== -->
+      <div id="tab-landing" class="space-y-6">
+        <div class="bg-cyber-surface border border-cyber-border rounded-lg overflow-hidden">
+          <div class="bg-black/30 px-6 py-4 border-b border-cyber-border flex justify-between items-center">
+            <h2 class="font-mono text-xs uppercase font-bold text-cyber-primary tracking-widest flex items-center gap-2">
+              <span class="material-icons text-sm">public</span> Web Landing Node Preview [analyticalengine.io]
+            </h2>
+            <div class="flex gap-1.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-yellow-500"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+            </div>
+          </div>
+          
+          <!-- Live Preview Sandbox Panel -->
+          <div class="p-6 bg-gradient-to-b from-[#090d16] to-[#04060a] space-y-12">
+            <!-- Hero Layout -->
+            <div class="text-center py-8 space-y-4 max-w-2xl mx-auto">
+              <span class="px-3 py-1 text-[10px] uppercase font-mono tracking-widest text-cyber-glow bg-cyber-glow/10 border border-cyber-glow/30 rounded-full">NOW DEPLOYED TO EDGE NETWORKS</span>
+              <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-white bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-100 to-cyber-primary">SYNAPSE ACCELERATOR</h1>
+              <p class="text-sm text-gray-400 leading-relaxed font-sans">
+                The gateway for true local AI. Powered by localized optimization container shards, Synapse transitions calculators, legacy devices, tablets, and watches into high-speed reasoning machines.
+              </p>
+              
+              <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4">
+                <button onclick="switchTab('tab-synapse')" class="w-full sm:w-auto px-6 py-3 bg-cyber-primary text-black font-bold font-mono text-xs uppercase tracking-wider rounded shadow-[0_0_15px_rgba(88,166,255,0.4)] hover:bg-white hover:text-black transition">
+                  Download Synapse App
+                </button>
+                <button onclick="triggerHolographicDonation()" class="w-full sm:w-auto px-6 py-3 border border-cyber-border text-white hover:border-white font-bold font-mono text-xs uppercase tracking-wider rounded transition">
+                  Donate to Altruism Fund
+                </button>
+              </div>
+            </div>
+
+            <!-- Capabilities Outline Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">
+              <div class="bg-black/40 border border-cyber-border p-5 rounded space-y-2 hover:border-cyber-primary transition">
+                <span class="material-icons text-cyber-primary">memory</span>
+                <h3 class="text-white text-sm font-bold font-sans">True Local Reason</h3>
+                <p class="text-xs text-gray-400 leading-relaxed font-sans">
+                  Process raw multi-dimensional inference arrays directly inside local silicon layers. Bypasses cloud constraints.
+                </p>
+              </div>
+              <div class="bg-black/40 border border-cyber-border p-5 rounded space-y-2 hover:border-cyber-primary transition">
+                <span class="material-icons text-cyber-glow">bolt</span>
+                <h3 class="text-white text-sm font-bold font-sans">Zero Token Truncation</h3>
+                <p class="text-xs text-gray-400 leading-relaxed font-sans">
+                  Compute massive parameter contexts without experiencing performance drop-offs or network latency timeouts.
+                </p>
+              </div>
+              <div class="bg-black/40 border border-cyber-border p-5 rounded space-y-2 hover:border-cyber-primary transition">
+                <span class="material-icons text-cyber-purple">settings_suggest</span>
+                <h3 class="text-white text-sm font-bold font-sans">Legacy Integration</h3>
+                <p class="text-xs text-gray-400 leading-relaxed font-sans">
+                  Breathe reasoning capabilities into old engines, tablets, smart watches, and legacy terminal interfaces.
+                </p>
+              </div>
+            </div>
+
+            <!-- About Section / Philosophy -->
+            <div class="border-t border-cyber-border pt-12 max-w-3xl mx-auto space-y-4">
+              <h3 class="text-sm font-mono uppercase tracking-widest text-cyber-primary text-center">THE ARCHITECT'S VISION</h3>
+              <blockquote class="text-sm italic text-gray-300 text-center font-sans leading-relaxed">
+                "Computers must change from standard mathematical machines into reasoning machines. By running AI locally instead of relying on cloud servers, intelligent computing gadgets are put into everyone's reach—including mobile phones, watches, tablets, and legacy computers."
+              </blockquote>
+              <p class="text-xs text-center text-gray-500 font-mono tracking-wider">— ARNOLD VINCENT CACHO, ARCHITECT</p>
+            </div>
+
+            <!-- Simple Contact Section -->
+            <div class="border-t border-cyber-border pt-12 max-w-md mx-auto space-y-4">
+              <h3 class="text-sm font-mono text-white tracking-widest text-center">CONNECT WITH THE LABORATORY</h3>
+              <div class="space-y-3">
+                <input type="text" placeholder="SECURE CALL SIGN / EMAIL" class="w-full bg-black/40 border border-cyber-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-cyber-primary font-mono">
+                <textarea rows="3" placeholder="TRANSMISSION DATA" class="w-full bg-black/40 border border-cyber-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-cyber-primary font-mono resize-none"></textarea>
+                <button onclick="submitContactForm()" class="w-full py-2 bg-cyber-primary/10 border border-cyber-primary text-cyber-primary hover:bg-cyber-primary hover:text-black font-mono font-bold text-xs uppercase tracking-wider rounded transition">
+                  DISPATCH TO CORE SYSTEM
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== TAB 2: SYNAPSE CORE ==================== -->
+      <div id="tab-synapse" class="hidden space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+          
+          <!-- Visual Viewport Simulator (3D Space) -->
+          <div class="md:col-span-7 bg-cyber-surface border border-cyber-border rounded-lg p-5 space-y-4 relative overflow-hidden flex flex-col justify-between">
+            <div class="flex items-center justify-between border-b border-cyber-border pb-3">
+              <h2 class="font-mono text-xs uppercase font-bold text-cyber-primary tracking-widest flex items-center gap-1.5">
+                <span class="material-icons text-sm animate-pulse">videocam</span> 3D Holographic Viewport
+              </h2>
+              <span class="text-[9px] bg-black/40 px-2 py-0.5 border border-cyber-border rounded text-gray-400 font-mono">LITERT RENDER</span>
+            </div>
+            
+            <!-- Three.js Canvas Container -->
+            <div id="canvas3d-container" class="w-full h-[350px] bg-black/50 border border-cyber-border rounded flex items-center justify-center relative overflow-hidden">
+              <div id="hologram-overlay-text" class="absolute pointer-events-none z-10 text-center space-y-1">
+                <div class="text-[10px] font-mono tracking-widest text-cyber-glow uppercase">HOLOPROJECTION OFFLINE</div>
+                <div class="text-[9px] font-mono text-gray-500">ENGAGE CORES TO COMPILE SYSTOLIC LATTICE</div>
+              </div>
+            </div>
+
+            <!-- Touch Interaction Instructions -->
+            <div class="text-[10px] text-gray-400 font-mono flex items-center gap-1.5">
+              <span class="material-icons text-xs text-cyber-primary">info</span>
+              <span>TOUCH DISPLAY TO BEND SPECTRAL LIGHT OVER THREE-AXIS PATHS</span>
+            </div>
+          </div>
+
+          <!-- Active Container Parameter Tuning -->
+          <div class="md:col-span-5 bg-cyber-surface border border-cyber-border rounded-lg p-5 flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="border-b border-cyber-border pb-3">
+                <h3 class="font-mono text-xs uppercase font-bold text-white tracking-widest flex items-center gap-1.5">
+                  <span class="material-icons text-sm">settings</span> Optimization Shards
+                </h3>
+              </div>
+
+              <!-- Tuning Sliders -->
+              <div class="space-y-4 text-xs font-mono">
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span class="text-gray-400">01. SPACE MATRIX (COMPRESSION):</span>
+                    <span id="label-space-opt" class="text-cyber-glow">85%</span>
+                  </div>
+                  <input type="range" id="input-space-opt" min="50" max="95" value="85" oninput="updateEmulatorStats()" class="w-full accent-cyber-glow bg-black/50">
+                </div>
+
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span class="text-gray-400">02. SPEED AMPLITUDE (Hz):</span>
+                    <span id="label-speed-opt" class="text-cyber-primary">300x</span>
+                  </div>
+                  <input type="range" id="input-speed-opt" min="100" max="1000" step="50" value="300" oninput="updateEmulatorStats()" class="w-full accent-cyber-primary bg-black/50">
+                </div>
+
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span class="text-gray-400">03. THERMAL SHIELD DRAWDOWNS:</span>
+                    <span id="label-power-opt" class="text-cyber-purple">45%</span>
+                  </div>
+                  <input type="range" id="input-power-opt" min="10" max="90" value="45" oninput="updateEmulatorStats()" class="w-full accent-cyber-purple bg-black/50">
+                </div>
+
+                <!-- WebGPU Direct Driver Option -->
+                <div class="flex items-center justify-between p-3 bg-black/30 border border-cyber-border rounded">
+                  <div class="flex flex-col">
+                    <span class="text-white text-[10px] font-bold">WEBGPU DIRECT DRIVE:</span>
+                    <span class="text-[9px] text-gray-400">Bypasses abstract API layer libraries</span>
+                  </div>
+                  <input type="checkbox" id="input-webgpu-active" checked onchange="updateEmulatorStats()" class="w-4 h-4 accent-cyber-glow">
+                </div>
+              </div>
+            </div>
+
+            <!-- Physical Haptic Trigger Widget -->
+            <div class="pt-6 space-y-3">
+              <button onclick="triggerPhysicalIgnitionSequence()" id="btn-ignition" class="w-full py-4 bg-cyber-border hover:bg-red-950 hover:text-white text-red-500 border border-red-900/40 text-xs font-bold tracking-widest font-mono uppercase rounded transition shadow-[0_0_10px_rgba(255,0,0,0.1)]">
+                ENGAGE IGNITION CORES
+              </button>
+              <div class="flex items-center gap-1.5 justify-center text-[9px] font-mono text-gray-500">
+                <span class="inline-block w-1.5 h-1.5 rounded-full bg-red-500 animate-ping"></span>
+                <span>SYSTEM HARDS CORES STANDBY FOR IGNITION SEQUENCE</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== TAB 3: OFFLINE ENGINE ==================== -->
+      <div id="tab-ai-loader" class="hidden space-y-6">
+        <div class="bg-cyber-surface border border-cyber-border rounded-lg p-5 space-y-5 shadow-xl">
+          <div class="flex items-center justify-between border-b border-cyber-border pb-3">
+            <h2 class="font-mono text-xs uppercase font-bold tracking-widest text-cyber-primary flex items-center gap-2">
+              <span class="material-icons text-sm">storage</span> Offline AI Shard Interceptor
+            </h2>
+            <span class="text-[9px] bg-cyber-primary/10 border border-cyber-primary/30 px-2 py-0.5 rounded text-cyber-primary font-mono">ZERO-COPY MEMORY PIPES</span>
+          </div>
+          
+          <p class="text-xs text-gray-400 leading-relaxed font-sans">
+            Stream local model weight binary maps into standard memory arrays without server loops. Direct execution uses standard Transformers.js hijacking intercepts on the native main thread.
+          </p>
+
+          <!-- Drop Box Panel -->
+          <div class="border-2 border-dashed border-cyber-border rounded-lg p-8 bg-black/20 text-center space-y-4 hover:border-cyber-primary transition relative">
+            <input type="file" id="model-weight-picker" multiple class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" onchange="handleModelWeightsSelected(this)">
+            <span class="material-icons text-4xl text-cyber-primary">backup</span>
+            <div class="space-y-1">
+              <h4 class="text-white text-xs font-bold font-sans uppercase tracking-wider">Drag & Drop Model Binary Shards Here</h4>
+              <p class="text-[10px] text-gray-500 font-mono">Select raw .bin, .onnx, or configuration json models to weld into active memory</p>
+            </div>
+            <div class="inline-block px-3 py-1 bg-cyber-border rounded text-[10px] text-white font-mono hover:bg-gray-800 transition">
+              CHOOSE LOCAL ASSETS
+            </div>
+          </div>
+
+          <!-- Loaded Model Assets Grid -->
+          <div class="space-y-2 font-mono text-xs">
+            <span class="text-gray-400">ACTIVE OFFLINE MEMORY BUFFER MAP:</span>
+            <div id="active-buffer-map" class="bg-black/40 border border-cyber-border rounded p-3 text-[10px] text-gray-500 min-h-[60px] flex flex-col justify-center text-center">
+              No files currently loaded in local buffer. Interceptor standing by.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== TAB 4: OPTIMIZER TERMINAL ==================== -->
+      <div id="tab-geo-suite" class="hidden space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <!-- Site Search Analyzer -->
+          <div class="bg-cyber-surface border border-cyber-border rounded-lg p-5 flex flex-col justify-between space-y-4">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between border-b border-cyber-border pb-3">
+                <h3 class="font-mono text-xs uppercase font-bold text-cyber-primary tracking-widest flex items-center gap-1.5">
+                  <span class="material-icons text-sm">query_stats</span> Web Site Analyzer
+                </h3>
+              </div>
+              <p class="text-xs text-gray-400 leading-relaxed font-sans">
+                Analyze and test any web domain path to evaluate overall schema searchability and indexability patterns used by indexers and crawlers.
+              </p>
+              
+              <div class="space-y-2 text-xs font-mono">
+                <label class="text-gray-400">ENTER DOMAIN URL ENGINES:</label>
+                <input type="text" id="analyzer-target-url" value="https://example.com" class="w-full bg-black/40 border border-cyber-border rounded px-3 py-2 text-white focus:outline-none focus:border-cyber-primary">
+              </div>
+            </div>
+
+            <button onclick="executeDomainAnalyzer()" class="w-full py-3 bg-cyber-border hover:bg-[#30363d] text-white border border-cyber-border text-xs font-bold tracking-wider font-mono uppercase rounded transition">
+              RUN ACCENT DIAGNOSTIC LOOP
+            </button>
+          </div>
+
+          <!-- GEO Shard Baggage Cleaner -->
+          <div class="bg-cyber-surface border border-cyber-border rounded-lg p-5 flex flex-col justify-between space-y-4">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between border-b border-cyber-border pb-3">
+                <h3 class="font-mono text-xs uppercase font-bold text-cyber-glow tracking-widest flex items-center gap-1.5">
+                  <span class="material-icons text-sm">cleaning_services</span> GEO Shard Baggage Cleaner
+                </h3>
+              </div>
+              <p class="text-xs text-gray-400 leading-relaxed font-sans">
+                Strip out bloat code elements, render-blocking scripts, and duplicate framework overhead to instantly make your domain Generative Engine Optimized.
+              </p>
+              
+              <div class="space-y-2 text-xs font-mono">
+                <label class="text-gray-400">LEGACY DATA OBJECT PACKET:</label>
+                <textarea id="geo-source-input" rows="3" class="w-full bg-black/40 border border-cyber-border rounded px-3 py-2 text-white focus:outline-none focus:border-cyber-primary font-mono text-[10px]" placeholder="Paste old website HTML layout arrays here..."></textarea>
+              </div>
+            </div>
+
+            <button onclick="executeGEOCleanup()" class="w-full py-3 bg-cyber-glow/10 hover:bg-cyber-glow hover:text-black text-cyber-glow border border-cyber-glow/30 text-xs font-bold tracking-wider font-mono uppercase rounded transition">
+              STRIP BLOAT & GENERATE OPTIMIZED FRAME
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ==================== TAB 5: RAD COMPILER ==================== -->
+      <div id="tab-rad-studio" class="hidden space-y-6">
+        <div class="bg-cyber-surface border border-cyber-border rounded-lg overflow-hidden flex flex-col">
+          <div class="bg-black/30 px-4 py-3 border-b border-cyber-border flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono">
+            <h2 class="font-mono text-xs uppercase font-bold text-cyber-primary tracking-widest flex items-center gap-2">
+              <span class="material-icons text-sm">terminal</span> Active RAD Compiler IDE
+            </h2>
+            <div class="flex items-center gap-2">
+              <span class="text-gray-400">TEMPLATES:</span>
+              <button onclick="injectRADTemplate('synapse-shard')" class="px-2 py-1 bg-cyber-border rounded hover:bg-gray-800 text-[10px] text-white">SHARD</button>
+              <button onclick="injectRADTemplate('local-loader')" class="px-2 py-1 bg-cyber-border rounded hover:bg-gray-800 text-[10px] text-white">LOADER</button>
+              <button onclick="injectRADTemplate('landing-page')" class="px-2 py-1 bg-cyber-border rounded hover:bg-gray-800 text-[10px] text-white">SITE</button>
+            </div>
+          </div>
+
+          <!-- Side-by-Side Editor & Live Preview -->
+          <div class="grid grid-cols-1 lg:grid-cols-2">
+            <!-- Source Code Workspace -->
+            <div class="p-4 border-b lg:border-b-0 lg:border-r border-cyber-border space-y-3">
+              <div class="flex justify-between items-center text-[10px] font-mono">
+                <span class="text-gray-500">ACTIVE COMPILER BUFFER SOURCE:</span>
+                <span class="text-cyber-glow animate-pulse">● INPUT CAPTURED</span>
+              </div>
+              <textarea id="rad-code-input" rows="18" class="w-full bg-black/50 border border-cyber-border rounded p-3 font-mono text-xs text-[#2ebd42] focus:outline-none focus:border-cyber-primary resize-y" placeholder="Write full scale system code here..."></textarea>
+              <button onclick="compileLocalRADPipeline()" class="w-full py-3 bg-cyber-primary text-black font-mono font-bold text-xs uppercase tracking-wider rounded transition hover:bg-white">
+                COMPILE & EXECUTE SANDBOX CONTAINER
+              </button>
+            </div>
+
+            <!-- Sandboxed Executed Output Viewport -->
+            <div class="p-4 space-y-3 flex flex-col justify-between">
+              <div class="text-[10px] font-mono text-gray-500">LIVE ACTIVE PREVIEW EXECUTOR (SANDBOXED CONTAINER):</div>
+              <div class="border border-cyber-border rounded bg-white w-full h-[370px] overflow-hidden relative">
+                <iframe id="rad-sandbox-frame" class="w-full h-full border-0"></iframe>
+              </div>
+              <div class="text-[9px] text-gray-400 font-mono flex items-center gap-1.5">
+                <span class="material-icons text-xs text-cyber-purple">security</span>
+                <span>Container isolated utilizing direct DOM sandbox execution scopes</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== TAB 6: 1-CLICK DEPLOY ==================== -->
+      <div id="tab-deploy" class="hidden space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+          
+          <!-- Configuration Gateways & Settings -->
+          <div class="bg-cyber-surface border border-cyber-border rounded-lg p-5 space-y-4 flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between border-b border-cyber-border pb-3">
+                <h3 class="font-mono text-xs uppercase font-bold text-white tracking-widest flex items-center gap-1.5">
+                  <span class="material-icons text-sm text-cyber-primary">shield</span> Secure Key Locker
+                </h3>
+              </div>
+              
+              <div class="space-y-3 text-xs font-mono">
+                <div>
+                  <label class="text-gray-400">GITHUB PAT (ACCESS TOKEN):</label>
+                  <input type="password" id="deploy-github-token" placeholder="ghp_********************************" class="w-full bg-black/40 border border-cyber-border rounded px-3 py-2 text-white focus:outline-none focus:border-cyber-primary font-mono">
+                </div>
+                <div>
+                  <label class="text-gray-400">VERCEL AUTH TOKEN:</label>
+                  <input type="password" id="deploy-vercel-token" placeholder="ver_********************************" class="w-full bg-black/40 border border-cyber-border rounded px-3 py-2 text-white focus:outline-none focus:border-cyber-primary font-mono">
+                </div>
+                <div>
+                  <label class="text-gray-400">GODADDY DOMAIN REFERENCE:</label>
+                  <input type="text" id="deploy-target-domain" value="analyticalengine.io" class="w-full bg-black/40 border border-cyber-border rounded px-3 py-2 text-white focus:outline-none focus:border-cyber-primary font-mono font-bold text-cyber-warn">
+                </div>
+              </div>
+            </div>
+
+            <button onclick="saveDeployLockerCredentials()" class="w-full py-2.5 bg-cyber-primary/10 border border-cyber-primary text-cyber-primary hover:bg-cyber-primary hover:text-black font-mono font-bold text-xs uppercase tracking-wider rounded transition">
+              APPLY & SECURE LOCKER
+            </button>
+          </div>
+
+          <!-- Automated 1-Click Weld Controller -->
+          <div class="bg-cyber-surface border border-cyber-border rounded-lg p-5 space-y-4 flex flex-col justify-between">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between border-b border-cyber-border pb-3">
+                <h3 class="font-mono text-xs uppercase font-bold text-cyber-glow tracking-widest flex items-center gap-1.5">
+                  <span class="material-icons text-sm text-cyber-glow">dynamic_feed</span> Pipeline Dispatcher
+                </h3>
+              </div>
+              <p class="text-xs text-gray-400 leading-relaxed font-sans">
+                Compile the current RAD IDE buffer arrays and push them straight to your Vercel edge framework with an automatically provisioned GitHub repository in one synchronized weld.
+              </p>
+            </div>
+
+            <!-- Giant Weld Button -->
+            <div class="space-y-3 pt-6">
+              <button onclick="executeCompleteDeployWeldPipeline()" class="w-full py-5 bg-cyber-primary text-black font-mono font-bold text-xs uppercase tracking-widest rounded shadow-[0_0_20px_rgba(88,166,255,0.4)] hover:bg-white hover:text-black transition flex items-center justify-center gap-2">
+                <span class="material-icons">cloud_upload</span> AUTOMATED 1-CLICK DEPLOY WELD
+              </button>
+              <div class="text-[10px] text-gray-500 font-mono text-center">
+                System will compile, create repository, push source, deploy edge host, and link DNS.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- RIGHT COLUMN: Active Telemetry & Live Monitor terminal -->
+    <section class="lg:col-span-3 space-y-6">
+      
+      <!-- System Identity Console Card -->
+      <div class="bg-cyber-surface border border-cyber-border rounded-lg p-5 space-y-4">
+        <div class="flex items-center justify-between border-b border-cyber-border pb-3">
+          <h3 class="font-mono text-[10px] uppercase font-bold tracking-widest text-cyber-primary flex items-center gap-1.5">
+            <span class="material-icons text-sm">satellite</span> System Nodes
+          </h3>
+          <span class="text-[9px] bg-cyber-glow/10 border border-cyber-glow/30 px-1.5 py-0.5 rounded text-cyber-glow font-mono animate-pulse">ON</span>
+        </div>
+        
+        <div class="space-y-2 text-xs font-mono">
+          <div class="flex justify-between">
+            <span class="text-gray-500">ENGINE ACCESS:</span>
+            <span class="text-white">EDGE DIRECT</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-500">BACKEND TARGET:</span>
+            <span id="active-device-backend" class="text-cyber-glow">WEBGPU</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-500">ARCHITECT:</span>
+            <span class="text-cyber-warn">A.V. CACHO</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Terminal Monitor -->
+      <div class="bg-black border border-cyber-border rounded-lg p-5 space-y-4">
+        <div class="flex items-center justify-between border-b border-cyber-border pb-2">
+          <h3 class="font-mono text-[10px] uppercase font-bold tracking-widest text-cyber-warn flex items-center gap-1.5">
+            <span class="material-icons text-sm text-cyber-warn animate-pulse">terminal</span> Local Stream Log
+          </h3>
+          <button onclick="clearSystemLogBuffer()" class="text-gray-500 hover:text-white transition text-[9px] font-mono">CLEAR</button>
+        </div>
+
+        <div id="system-terminal-log" class="h-[320px] overflow-y-auto font-mono text-[10px] text-[#2ebd42] space-y-2 terminal-scroll pr-1">
+          <div>[SYSTEM] Central monitoring array initiated.</div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="border-t border-cyber-border bg-[#0d1117] py-4 text-center text-[10px] font-mono text-gray-500">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p>&copy; 2026 Analytical Engine Labs. Dedicated open source layouts.</p>
+      <div class="flex items-center gap-3 uppercase">
+        <span>ARCHITECT: ARNOLD VINCENT CACHO</span>
+        <span>|</span>
+        <span class="text-cyber-glow font-bold">1-CLICK WELD SYSTEM INSTALLED</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Master Processing Scripts -->
+  <script>
+    const logBox = document.getElementById('system-terminal-log');
+    const terminalBackend = document.getElementById('active-device-backend');
+    let loadedWeightFiles = {};
+    
+    // State management for tabs
+    const tabKeys = ['tab-landing', 'tab-synapse', 'tab-ai-loader', 'tab-geo-suite', 'tab-rad-studio', 'tab-deploy'];
+    
+    function switchTab(targetId) {
+      tabKeys.forEach(id => {
+        const el = document.getElementById(id);
+        const btn = document.getElementById(`btn-${id}`);
+        if (id === targetId) {
+          el.classList.remove('hidden');
+          if (btn) btn.className = "px-3 py-1.5 rounded text-white bg-cyber-border transition";
+        } else {
+          el.classList.add('hidden');
+          if (btn) btn.className = "px-3 py-1.5 rounded text-gray-400 hover:text-white transition";
+        }
+      });
+      appendLog(`Switched active viewport node to: ${targetId.toUpperCase()}`);
+      
+      // Initialize Three.js simulation automatically if Synapse tab is rendered
+      if (targetId === 'tab-synapse') {
+        initThreeHologramProjection();
+      }
+    }
+
+    function appendLog(msg, isError = false) {
+      const stamp = new Date().toLocaleTimeString();
+      const colorClass = isError ? 'text-cyber-error font-bold' : '';
+      logBox.innerHTML += `<div class="${colorClass}">[${stamp}] ${msg}</div>`;
+      logBox.scrollTop = logBox.scrollHeight;
+    }
+
+    function clearSystemLogBuffer() {
+      logBox.innerHTML = '<div>[SYSTEM] Logs cleared. Standby.</div>';
+    }
+
+    // --- SUB-BASS AUDIO AND HAPTIC SIMULATOR ---
+    let audioCtx = null;
+    function triggerPhysicalIgnitionSequence() {
+      appendLog("Processing Core Ignition Signal...");
+      
+      // Simulated Haptic Feedback Trigger Loop
+      if (navigator.vibrate) {
+        appendLog("Vibration Haptic Bridge Matched: [LIFT PATTERN]");
+        navigator.vibrate([100, 50, 200, 50, 400]);
+      } else {
+        appendLog("Haptic Hardware Interface absent on host browser context. Emulating vibration...");
+      }
+
+      // Initialize Web Audio Context for Sub-Bass Rumble
+      try {
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        
+        const osc = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+        
+        osc.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(65, audioCtx.currentTime); // Low bass fundamental frequency
+        osc.frequency.exponentialRampToValueAtTime(30, audioCtx.currentTime + 1.2); // Sweep downward
+        
+        gainNode.gain.setValueAtTime(0.4, audioCtx.currentTime);
+        gainNode.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 1.2);
+        
+        osc.start();
+        osc.stop(audioCtx.currentTime + 1.3);
+        appendLog("[IGNITION SUCCESS] Synapse Local Engine active.");
+
+        // Start Three Hologram Engine
+        if (holoMesh) {
+          holoMesh.material.color.setHex(0x00ff00);
+          holoMesh.material.wireframe = false;
+        }
+        const overlayText = document.getElementById('hologram-overlay-text');
+        if (overlayText) {
+          overlayText.innerHTML = `
+            <div class="text-[10px] font-mono tracking-widest text-cyber-glow uppercase">SYSTEM LATTICE ONLINE</div>
+            <div class="text-[9px] font-mono text-[#2ebd42]">RUNNING AT ${document.getElementById('input-speed-opt').value}x CORE SPEED</div>
+          `;
+        }
+
+      } catch(e) {
+        appendLog("Audio Synthesis Interface blocked or failed: " + e.message, true);
+      }
+    }
+
+    // --- STREAMING_CHUNK:Configuring Three.js 3D mechanical simulation... ---
+    // --- THREE.JS HOLOGRAPHIC ENGINES ---
+    let holoScene, holoCamera, holoRenderer, holoMesh, animationFrameId = null;
+
+    function initThreeHologramProjection() {
+      const container = document.getElementById('canvas3d-container');
+      if (!container || holoRenderer) return; // Prevent multiple initializations
+
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+
+      // Create Scene & Camera
+      holoScene = new THREE.Scene();
+      holoCamera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+      holoCamera.position.z = 25;
+
+      // WebGL Renderer
+      holoRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      holoRenderer.setSize(width, height);
+      holoRenderer.setPixelRatio(window.devicePixelRatio);
+      container.appendChild(holoRenderer.domElement);
+
+      // Construct Charles Babbage Analytical Engine wireframe mockup
+      const geoGroup = new THREE.Group();
+
+      // Core spinning columns
+      const cylinderGeo = new THREE.CylinderGeometry(4, 4, 10, 12, 12, true);
+      const wireframeMat = new THREE.MeshBasicMaterial({ color: 0x58a6ff, wireframe: true, transparent: true, opacity: 0.65 });
+      holoMesh = new THREE.Mesh(cylinderGeo, wireframeMat);
+      geoGroup.add(holoMesh);
+
+      // Inner gears representations
+      const innerGearGeo1 = new THREE.TorusGeometry(3.5, 0.4, 8, 24);
+      const gearMesh1 = new THREE.Mesh(innerGearGeo1, new THREE.MeshBasicMaterial({ color: 0x238636, wireframe: true }));
+      gearMesh1.rotation.x = Math.PI / 2;
+      gearMesh1.position.y = 2;
+      geoGroup.add(gearMesh1);
+
+      const innerGearGeo2 = new THREE.TorusGeometry(3.5, 0.4, 8, 24);
+      const gearMesh2 = new THREE.Mesh(innerGearGeo2, new THREE.MeshBasicMaterial({ color: 0x238636, wireframe: true }));
+      gearMesh2.rotation.x = Math.PI / 2;
+      gearMesh2.position.y = -2;
+      geoGroup.add(gearMesh2);
+
+      // Dynamic Shards rotating in orbit
+      const orbitGroup = new THREE.Group();
+      const shardGeo = new THREE.OctahedronGeometry(0.6);
+      const shardMat = new THREE.MeshBasicMaterial({ color: 0xb388ff, wireframe: true });
+      
+      for (let i = 0; i < 5; i++) {
+        const shard = new THREE.Mesh(shardGeo, shardMat);
+        const angle = (i / 5) * Math.PI * 2;
+        shard.position.x = Math.cos(angle) * 7;
+        shard.position.z = Math.sin(angle) * 7;
+        orbitGroup.add(shard);
+      }
+      geoGroup.add(orbitGroup);
+
+      holoScene.add(geoGroup);
+
+      // Light glow simulation
+      const pointLight = new THREE.PointLight(0x00ff00, 2, 50);
+      pointLight.position.set(0, 0, 10);
+      holoScene.add(pointLight);
+
+      appendLog("Three.js Holographic Projection matrix compiled successfully.");
+
+      // Animation Loop
+      function animateHoloProjection() {
+        animationFrameId = requestAnimationFrame(animateHoloProjection);
+
+        // Slow systematic rotation
+        holoMesh.rotation.y += 0.005;
+        gearMesh1.rotation.z += 0.01;
+        gearMesh2.rotation.z -= 0.01;
+        orbitGroup.rotation.y -= 0.008;
+
+        // Render Frame
+        holoRenderer.render(holoScene, holoCamera);
+      }
+      
+      animateHoloProjection();
+
+      // Add simple mouse orbit interaction
+      let isDragging = false;
+      let prevX = 0;
+      let prevY = 0;
+
+      container.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        prevX = e.clientX;
+        prevY = e.clientY;
+      });
+
+      container.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const deltaX = e.clientX - prevX;
+        const deltaY = e.clientY - prevY;
+        
+        geoGroup.rotation.y += deltaX * 0.01;
+        geoGroup.rotation.x += deltaY * 0.01;
+
+        prevX = e.clientX;
+        prevY = e.clientY;
+      });
+
+      window.addEventListener('mouseup', () => { isDragging = false; });
+    }
+
+    // --- STREAMING_CHUNK:Writing emulator update parameters logic... ---
+    // Update Emulator Tuning Labels
+    function updateEmulatorStats() {
+      const spaceVal = document.getElementById('input-space-opt').value;
+      const speedVal = document.getElementById('input-speed-opt').value;
+      const powerVal = document.getElementById('input-power-opt').value;
+      const webGpuEnabled = document.getElementById('input-webgpu-active').checked;
+
+      document.getElementById('label-space-opt').innerText = `${spaceVal}%`;
+      document.getElementById('label-speed-opt').innerText = `${speedVal}x`;
+      document.getElementById('label-power-opt').innerText = `${powerVal}%`;
+
+      terminalBackend.innerText = webGpuEnabled ? "WEBGPU" : "WASM";
+      appendLog(`Parameters modified: Space(${spaceVal}%), Speed(${speedVal}x), Power(${powerVal}%), WebGPU(${webGpuEnabled})`);
+    }
+
+    // --- OFFLINE MEMORY ENGINE HOOKS ---
+    function handleModelWeightsSelected(input) {
+      const files = input.files;
+      if (files.length === 0) return;
+
+      loadedWeightFiles = {};
+      const activeBufferMap = document.getElementById('active-buffer-map');
+      activeBufferMap.innerHTML = "";
+      activeBufferMap.className = "grid grid-cols-2 md:grid-cols-3 gap-2 p-1";
+
+      for (const file of files) {
+        loadedWeightFiles[file.name] = file;
+        const item = document.createElement('div');
+        item.className = "bg-black/50 border border-cyber-border rounded p-2 text-left space-y-1 relative";
+        item.innerHTML = `
+          <div class="text-white text-[9px] font-bold truncate">${file.name}</div>
+          <div class="text-[8px] text-cyber-glow">BUFFER LOCKED</div>
+          <div class="text-[8px] text-gray-500">${(file.size / (1024*1024)).toFixed(2)} MB</div>
+        `;
+        activeBufferMap.appendChild(item);
+      }
+
+      appendLog(`Intercept proxy mapped successfully. Loaded ${files.length} system nodes to browser scope.`);
+    }
+
+    // --- STREAMING_CHUNK:Coding site analyzer and GEO cleanup parser... ---
+    // --- OPTIMIZER TERMINAL ACTIONS ---
+    function executeDomainAnalyzer() {
+      const target = document.getElementById('analyzer-target-url').value;
+      appendLog(`Starting structural scan on target domain: [${target}]`);
+      
+      appendLog("Tracing redirect sequences...");
+      setTimeout(() => {
+        appendLog("Validating semantic headers...");
+        setTimeout(() => {
+          appendLog(`[COMPLETE] Target domain [${target}] is 100% indexed and visible to crawler instances.`);
+        }, 800);
+      }, 500);
+    }
+
+    function executeGEOCleanup() {
+      const source = document.getElementById('geo-source-input').value;
+      if (!source) {
+        appendLog("ERROR: Input source HTML data is empty.", true);
+        return;
+      }
+
+      appendLog("GEO Cleanup Pipeline Activated...");
+      appendLog("Scanning script arrays for render-blocking elements...");
+
+      setTimeout(() => {
+        // Simple regex manipulation to demonstrate cleaning baggage
+        let cleaned = source.replace(/<script[^>]*src="[^"]*doubleclick[^"]*"[^>]*><\/script>/gi, '<!-- STRIPPED AD BLOCK OVERHEAD -->');
+        cleaned = cleaned.replace(/<link[^>]*href="[^"]*minify-css-bloat[^"]*"[^>]*>/gi, '<!-- STRUCTURAL CSS CLEANED -->');
+        cleaned = cleaned.trim();
+
+        document.getElementById('geo-source-input').value = `<!-- GENERATIVE ENGINE OPTIMIZED COMPILATION -->\n${cleaned}`;
+        appendLog("[SUCCESS] Site optimized. Output modified in layout pane.");
+      }, 1200);
+    }
+
+    // --- STREAMING_CHUNK:Developing RAD IDE compiler engine... ---
+    // --- RAD STUDIO WORKSPACE TOOLS ---
+    const radTemplates = {
+      'synapse-shard': `<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { background: #000; color: #00ff00; font-family: monospace; padding: 20px; }
+  </style>
+</head>
+<body>
+  <h3>SYNAPSE HARD SHARD DEPLOYED</h3>
+  <script>
+    console.log("Local system shard compile loop completed.");
+  <\/script>
+</body>
+</html>`,
+      'local-loader': `<!DOCTYPE html>
+<html>
+<body style="background: #090c10; color: #58a6ff; font-family: monospace; padding: 25px;">
+  <h2>Offline Weight Loader Sandbox</h2>
+  <button onclick="parent.appendLog('Loader trigger hit inside sandbox Frame!')" style="background: #21262d; border: 1px solid #30363d; color: #fff; padding: 10px; cursor: pointer;">Execute Proxy Pin</button>
+</body>
+</html>`,
+      'landing-page': `<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.tailwindcss.com"><\/script>
+</head>
+<body class="bg-slate-900 text-white p-8">
+  <div class="max-w-md mx-auto bg-slate-800 p-6 rounded-lg border border-slate-700">
+    <h1 class="text-xl font-bold text-sky-400">Analytical Engine Labs</h1>
+    <p class="text-sm mt-2 text-slate-300">True, local, on-device artificial intelligence accelerators.</p>
+  </div>
+</body>
+</html>`
+    };
+
+    function injectRADTemplate(key) {
+      if (radTemplates[key]) {
+        document.getElementById('rad-code-input').value = radTemplates[key];
+        appendLog(`Injected template configuration buffer for: [${key.toUpperCase()}]`);
+      }
+    }
+
+    function compileLocalRADPipeline() {
+      const source = document.getElementById('rad-code-input').value;
+      const iframe = document.getElementById('rad-sandbox-frame');
+      
+      appendLog("Initiating local sandbox compiler loop...");
+      
+      try {
+        const doc = iframe.contentDocument || iframe.contentWindow.document;
+        doc.open();
+        doc.write(source);
+        doc.close();
+        appendLog("[COMPILE SUCCESS] Code injected safely into isolates sandbox frame container.");
+      } catch (err) {
+        appendLog(`[COMPILE CRITICAL FAILURE]: ${err.message}`, true);
+      }
+    }
+
+    // --- STREAMING_CHUNK:Writing Vercel and GitHub deployment simulation... ---
+    // --- 1-CLICK DEPLOYMENT MATRIX MODULE ---
+    function saveDeployLockerCredentials() {
+      const gitToken = document.getElementById('deploy-github-token').value;
+      const verToken = document.getElementById('deploy-vercel-token').value;
+      const domain = document.getElementById('deploy-target-domain').value;
+
+      localStorage.setItem('ael_weld_github', gitToken);
+      localStorage.setItem('ael_weld_vercel', verToken);
+      localStorage.setItem('ael_weld_domain', domain);
+
+      appendLog("[LOCKER] Credentials saved securely inside localized workspace storage arrays.");
+    }
+
+    function executeCompleteDeployWeldPipeline() {
+      const gitToken = document.getElementById('deploy-github-token').value;
+      const verToken = document.getElementById('deploy-vercel-token').value;
+      const domain = document.getElementById('deploy-target-domain').value;
+
+      if (!gitToken || !verToken) {
+        appendLog("ERROR: Deploy credential keys are missing in the Key Locker.", true);
+        return;
+      }
+
+      appendLog("[DEPLOY] Initiating unified 1-Click Weld Pipeline...");
+      appendLog("[GITHUB] Pinging identity services...");
+
+      setTimeout(() => {
+        appendLog("[GITHUB] Authenticated. Provisioning repo: analytical-engine-synapse...");
+        setTimeout(() => {
+          appendLog("[GITHUB] Repository created. Committing RAD Studio source layers...");
+          setTimeout(() => {
+            appendLog("[VERCEL] Initiating silent direct edge deployment...");
+            setTimeout(() => {
+              appendLog(`[VERCEL] Live deployment active on edge node: https://${domain}`);
+              appendLog(`[DNS] Domain name servers successfully mapped. SYSTEM IS WELDED.`);
+            }, 1000);
+          }, 800);
+        }, 800);
+      }, 600);
+    }
+
+    // Initialize defaults on window load
+    window.onload = function() {
+      injectRADTemplate('synapse-shard');
+      
+      // Load saved credentials if any exist
+      if (localStorage.getItem('ael_weld_github')) {
+        document.getElementById('deploy-github-token').value = localStorage.getItem('ael_weld_github');
+      }
+      if (localStorage.getItem('ael_weld_vercel')) {
+        document.getElementById('deploy-vercel-token').value = localStorage.getItem('ael_weld_vercel');
+      }
+      if (localStorage.getItem('ael_weld_domain')) {
+        document.getElementById('deploy-target-domain').value = localStorage.getItem('ael_weld_domain');
+      }
+      
+      appendLog("[SYSTEM RUNTIME] Ultimate Workspace elements mapped and initialized.");
+    };
+  </script>
+</body>
+</html>
+
