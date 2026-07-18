@@ -57,9 +57,9 @@
         <a href="docs.html" class="px-3 py-1.5 rounded text-gray-400 hover:text-white transition flex items-center gap-1">
           <span class="material-icons text-sm">menu_book</span> SPECIFICATIONS
         </a>
-        <button onclick="openLaboratoryAccessPortal()" class="px-3 py-1.5 rounded text-cyber-glow border border-cyber-glow/30 bg-cyber-glow/5 hover:bg-cyber-glow/20 transition flex items-center gap-1">
-          <span class="material-icons text-sm">lock</span> LABORATORY PORTAL
-        </button>
+        <a href="#contact" class="px-3 py-1.5 rounded text-gray-400 hover:text-white transition flex items-center gap-1">
+          <span class="material-icons text-sm">mail</span> CONTACT US
+        </a>
       </nav>
     </div>
   </header>
@@ -79,9 +79,9 @@
         <a href="docs.html" class="w-full sm:w-auto px-6 py-3 bg-cyber-primary text-black font-bold font-mono text-xs uppercase tracking-wider rounded shadow-[0_0_15px_rgba(88,166,255,0.4)] hover:bg-white hover:text-black transition flex items-center justify-center gap-2">
           <span class="material-icons text-sm">menu_book</span> READ SPECIFICATIONS
         </a>
-        <button onclick="openLaboratoryAccessPortal()" class="w-full sm:w-auto px-6 py-3 border border-cyber-border text-white hover:border-white font-bold font-mono text-xs uppercase tracking-wider rounded transition flex items-center justify-center gap-2">
-          <span class="material-icons text-sm">terminal</span> ACCESS PORTAL
-        </button>
+        <a href="#contact" class="w-full sm:w-auto px-6 py-3 border border-cyber-border text-white hover:border-white hover:bg-white hover:text-black font-bold font-mono text-xs uppercase tracking-wider rounded transition flex items-center justify-center gap-2">
+          <span class="material-icons text-sm">mail</span> CONTACT OUR LAB
+        </a>
       </div>
     </div>
 
@@ -127,9 +127,9 @@
               A high-speed, secure virtual assistant for your phone. It features offline AI chats, local image generators, and a responsive visual music synchronization panel.
             </p>
           </div>
-          <button onclick="openLaboratoryAccessPortal()" class="text-xs font-mono uppercase tracking-wider text-cyber-primary hover:text-white transition text-left flex items-center gap-1">
-            Access Portal Shards <span class="material-icons text-sm">arrow_forward</span>
-          </button>
+          <div class="text-[10px] font-mono text-cyber-primary bg-cyber-primary/5 border border-cyber-primary/20 px-2 py-1 rounded w-fit uppercase">
+            ● SYSTEM ACTIVE // SECURE
+          </div>
         </div>
 
         <div class="bg-black/40 border border-cyber-border p-6 rounded-lg space-y-4 hover:border-cyber-primary transition flex flex-col justify-between">
@@ -142,9 +142,9 @@
               A smart 1-tap optimizer that instantly cools down your hardware, clears active memory cache, and extends battery life through advanced resource reclamation.
             </p>
           </div>
-          <button onclick="openLaboratoryAccessPortal()" class="text-xs font-mono uppercase tracking-wider text-cyber-glow hover:text-white transition text-left flex items-center gap-1">
-            Access System Shards <span class="material-icons text-sm">arrow_forward</span>
-          </button>
+          <div class="text-[10px] font-mono text-cyber-glow bg-cyber-glow/5 border border-cyber-glow/20 px-2 py-1 rounded w-fit uppercase">
+            ● HARDIENING SYNCED // ACTIVE
+          </div>
         </div>
       </div>
     </div>
@@ -159,12 +159,12 @@
     </div>
 
     <!-- Simple Contact Section -->
-    <div class="border-t border-cyber-border pt-12 max-w-md mx-auto space-y-4">
+    <div id="contact" class="border-t border-cyber-border pt-12 max-w-md mx-auto space-y-4 scroll-mt-24">
       <h3 class="text-xs font-mono text-white tracking-widest text-center">CONNECT WITH THE LABORATORY</h3>
       <div class="space-y-3">
         <input type="text" placeholder="YOUR NAME OR SECURE CALL SIGN" class="w-full bg-black/40 border border-cyber-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-cyber-primary font-mono">
         <textarea rows="3" placeholder="YOUR MESSAGE OR INQUIRY" class="w-full bg-black/40 border border-cyber-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-cyber-primary font-mono resize-none"></textarea>
-        <button class="w-full py-2 bg-cyber-primary/10 border border-cyber-primary text-cyber-primary hover:bg-cyber-primary hover:text-black font-mono font-bold text-xs uppercase tracking-wider rounded transition">
+        <button onclick="alert('Inquiry successfully dispatched to AEL system core.')" class="w-full py-2 bg-cyber-primary/10 border border-cyber-primary text-cyber-primary hover:bg-cyber-primary hover:text-black font-mono font-bold text-xs uppercase tracking-wider rounded transition">
           SUBMIT TRANSMISSION
         </button>
       </div>
@@ -177,67 +177,5 @@
     <p>© 2026 Analytical Engine Laboratories (AEL). All sovereign rights reserved.</p>
   </footer>
 
-  <!-- Gated Laboratory Login overlay modal -->
-  <div id="lab-access-portal" class="fixed inset-0 bg-black/95 z-50 backdrop-blur flex items-center justify-center p-4 hidden">
-    <div class="max-w-md w-full bg-[#0d1117] border border-cyber-border rounded-lg shadow-[0_0_30px_rgba(35,211,238,0.2)] overflow-hidden">
-      <!-- Modal Header -->
-      <div class="bg-black/40 px-5 py-3 border-b border-cyber-border flex justify-between items-center text-xs font-mono">
-        <span class="text-red-500 animate-pulse flex items-center gap-1.5"><span class="material-icons text-sm">security</span> AUTHORIZATION REQUIRED</span>
-        <button onclick="closeLaboratoryAccessPortal()" class="text-gray-500 hover:text-white transition"><span class="material-icons text-sm">close</span></button>
-      </div>
-      <!-- Modal Body -->
-      <div class="p-6 space-y-5">
-        <div class="space-y-1 text-center">
-          <h3 class="text-white text-base font-bold font-mono tracking-wider">AEL SYSTEM TERMINAL ACCESS</h3>
-          <p class="text-[10px] text-gray-400 font-sans">Enter credentials to redirect to the secure private workspace pipeline.</p>
-        </div>
-        <!-- Fields -->
-        <div class="space-y-3 font-mono text-xs">
-          <div class="space-y-1">
-            <label class="text-cyber-primary block text-[10px] uppercase">SECURE CALL SIGN / USER</label>
-            <input type="text" id="lab-portal-user" value="analyticalenginelabs" class="w-full bg-black/60 border border-cyber-border rounded px-3 py-2 text-white focus:outline-none focus:border-cyber-primary">
-          </div>
-          <div class="space-y-1">
-            <label class="text-cyber-glow block text-[10px] uppercase">CRYPTOGRAPHIC SECRET PASSCODE</label>
-            <input type="password" id="lab-portal-pass" placeholder="••••••••••••••••" class="w-full bg-black/60 border border-cyber-border rounded px-3 py-2 text-white focus:outline-none focus:border-cyber-glow">
-          </div>
-        </div>
-        <!-- Buttons -->
-        <div class="space-y-2 pt-2">
-          <button onclick="authenticateLaboratoryAccessPortal()" class="w-full py-2.5 bg-cyber-glow text-black font-mono font-bold text-xs uppercase tracking-widest rounded shadow-[0_0_15px_rgba(35,211,238,0.3)] hover:bg-white transition flex items-center justify-center gap-1.5">
-            <span class="material-icons text-sm">login</span> IGNITE SECURE TUNNEL
-          </button>
-          <button onclick="bypassLaboratoryAccessPortal()" class="w-full py-2 border border-cyber-border text-xs text-gray-400 hover:text-white font-mono rounded hover:bg-cyber-surface/50 transition">
-            BYPASS TERMINAL (ADMIN MODE)
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    function openLaboratoryAccessPortal() {
-      document.getElementById('lab-access-portal').classList.remove('hidden');
-    }
-
-    function closeLaboratoryAccessPortal() {
-      document.getElementById('lab-access-portal').classList.add('hidden');
-    }
-
-    function authenticateLaboratoryAccessPortal() {
-      const pass = document.getElementById('lab-portal-pass').value;
-      if (!pass) {
-        alert("ERROR: Cryptographic Passcode must not be empty.");
-        return;
-      }
-      bypassLaboratoryAccessPortal();
-    }
-
-    function bypassLaboratoryAccessPortal() {
-      closeLaboratoryAccessPortal();
-      // Instantly redirect to the separate secure pipeline page!
-      window.location.href = "pipeline.html";
-    }
-  </script>
 </body>
 </html>
